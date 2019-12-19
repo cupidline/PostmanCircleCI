@@ -8,3 +8,4 @@ jobs:
       - checkout
       - newman/newman-run:
           collection: ./ReqresAPI.json
+          
