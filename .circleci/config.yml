@@ -7,5 +7,5 @@ jobs:
     steps:
       - checkout
       - newman/newman-run:
-          collection: /ReqresAPI.json
+          collection: ReqresAPI.json
           
