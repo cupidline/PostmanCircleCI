@@ -1,10 +1,7 @@
 version: 2.1
 orbs:
   newman: postman/newman@0.0.2
-nightly:
-    triggers: #use the triggers key to indicate a scheduled build
-      - schedule:
-          cron: "30 8 * * 1-6" # use cron syntax to set the schedule
+
 jobs:
   build:
     executor: newman/postman-newman-docker
@@ -12,4 +9,8 @@ jobs:
       - checkout
       - newman/newman-run:
           collection: ./ReqresAPI.json
-          
+workflow:
+  nightly:
+    triggers: #use the triggers key to indicate a scheduled build
+      - schedule:
+          cron: "0 5 * * 1-6" # use cron syntax to set the schedule
