@@ -1,15 +1,15 @@
-version: 2
+version: 2.1
 orbs:
-  postman: postman/newman@0.0.1
+  newman: postman/newman@0.0.2
 
 jobs:
   build:
-    docker: postman/newman
+    executor: newman/postman-newman-docker
     steps:
       - checkout
       - newman/newman-run:
           collection: ./ReqresAPI.json
-
+          
 workflow:
   commit-workflow:
     jobs:
