@@ -1,6 +1,6 @@
 version: 2
 orbs:
-  newman: postman/newman@0.0.1
+  postman: postman/newman@0.0.1
 
 jobs:
   build:
