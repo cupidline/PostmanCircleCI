@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 orbs:
   newman: postman/newman@0.0.2
 
