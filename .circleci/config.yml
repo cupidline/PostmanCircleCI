@@ -1,6 +1,6 @@
-version: 2.1
+version: 2
 orbs:
-  newman: postman/newman@0.0.2
+  newman: postman/newman@0.0.1
 
 jobs:
   build:
@@ -9,7 +9,7 @@ jobs:
       - checkout
       - newman/newman-run:
           collection: ./ReqresAPI.json
-          
+
 workflow:
   commit-workflow:
     jobs:
