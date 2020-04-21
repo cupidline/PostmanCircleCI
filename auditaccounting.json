@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "1bab8360-58c9-4149-b9d2-dc31c63c1cb1",
+		"name": "Audit accounting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "audit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-hasura-admin-secret",
+						"value": "fu6bwe76bifdasfad3vwe",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"mutation InsertLog { insert_log(objects: { user: { uuid:\\\"bbb63a16-1df1-4178-b0fb-4781b5bb9eb3\\\" firstname:\\\"Rahmi\\\" lastname:\\\"Oktapriansyah Lubis\\\" email:\\\"engineering.innovation@dana.id\\\" organization_id:\\\"413fdd0e-4d78-11ea-a605-0ab739949296\\\" organization_name:\\\"PT. Espay Debit Indonesia Koe\\\"} service: \\\"Avalanche\\\" operation_type: \\\"CREATE\\\" request_detail: \\\"{}}\\\" value_new: \\\"{}\\\" value_old: \\\"{}\\\" }) { returning { id user service operation_type request_detail value_new created_at } } }\"}"
+				},
+				"url": {
+					"raw": "https://audit.innov8.id/v1/graphql",
+					"protocol": "https",
+					"host": [
+						"audit",
+						"innov8",
+						"id"
+					],
+					"path": [
+						"v1",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "log by pk",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-hasura-admin-secret",
+						"type": "text",
+						"value": "fu6bwe76bifdasfad3vwe"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"{ log_by_pk(id: \\\"2cb3a329-b175-4a30-b473-ac633ffa44fe\\\") { id user } }\"}"
+				},
+				"url": {
+					"raw": "https://audit.innov8.id/v1/graphql",
+					"protocol": "https",
+					"host": [
+						"audit",
+						"innov8",
+						"id"
+					],
+					"path": [
+						"v1",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query log audit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-hasura-admin-secret",
+						"type": "text",
+						"value": "fu6bwe76bifdasfad3vwe"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"query MyQuery { log(distinct_on: created_at limit: 1) { id user operation_type service value_new value_old created_at } }\"}"
+				},
+				"url": {
+					"raw": "https://audit.innov8.id/v1/graphql",
+					"protocol": "https",
+					"host": [
+						"audit",
+						"innov8",
+						"id"
+					],
+					"path": [
+						"v1",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

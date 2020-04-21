@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - newman/newman-run:
-          collection: ./ReqresAPI.json
+          collection: ./auditaccounting.json
           
 workflow:
   commit-workflow:
